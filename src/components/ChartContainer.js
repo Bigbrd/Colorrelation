@@ -3,16 +3,14 @@ import React, {
 } from 'react';
 // Note that Highcharts has to be required separately
 const ReactHighcharts = require('react-highcharts');
+// Highcharts 3d
 const Highcharts3d = require('highcharts-3d');
-// const ReactDOM = require('react-dom');
-
 Highcharts3d(ReactHighcharts.Highcharts);
-
 // Highcharts more
-let HighchartsMore = require('highcharts-more');
+const HighchartsMore = require('highcharts-more');
 HighchartsMore(ReactHighcharts.Highcharts);
 // Highcharts exporting
-let HighchartsExporting = require('highcharts-exporting');
+const HighchartsExporting = require('highcharts-exporting');
 HighchartsExporting(ReactHighcharts.Highcharts);
 
 const config = {
@@ -122,30 +120,21 @@ class ChartContainer extends Component {
     this.state = {
       chartFoo: 'x'
     };
-    this.click = this.click.bind(this);
+    this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
   }
 
   componentDidMount() {
-    let chart = this.getChartFunc();
+    let chart = this.refs.chart.getChart();
     chart.series[0].addPoint({
       x: 10,
       y: 12,
       z: 3
     });
-    // this.setState({chartState: chart});
-    console.log(this);
-    console.log(this.refs.chart);
-    this.refs.chart.click.bind(this.refs.chart);
-    console.log(chart);
-    console.log(this.state.chartFoo);
-  }
-  getChartFunc() {
-    return this.refs.chart.getChart();
+
   }
 
-  click(eStart) {
-    console.log("hey");
-    console.log(this.state.chartFoo);
+  handleOnMouseDown(eStart) {
+    console.log("mousedown");
     console.log(this.refs.chart.getChart());
 
     let chart = this.refs.chart.getChart();
@@ -153,7 +142,7 @@ class ChartContainer extends Component {
     let posX = eStart.pageX,
       posY = eStart.pageY,
       alpha = chart.options.chart.options3d.alpha,
-      beta = chart.oxptions.chart.options3d.beta,
+      beta = chart.options.chart.options3d.beta,
       newAlpha,
       newBeta,
       sensitivity = 5; // lower is more sensitive
@@ -182,19 +171,18 @@ class ChartContainer extends Component {
   }
 
   render() {
-    return <ReactHighcharts config = {
-      config
-    }
-    ref = "chart"
-    domProps = {
-      {
-        id: 'chartie',
-        onMouseDown: this.click
+    return ( < ReactHighcharts config = {
+        config
       }
+      ref = "chart"
+      domProps = {
+        {
+          id: 'chartie',
+          onMouseDown: this.handleOnMouseDown
+        }
+      }
+      />);
     }
-    />;
-    // return <ReactHighcharts config={config} ref="chart" domProps = {{id: 'chartie'}}/>;
   }
-}
 
-export default ChartContainer;
+  export default ChartContainer;

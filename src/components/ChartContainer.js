@@ -82,21 +82,9 @@ const config = {
     name: 'Data',
     zIndex: 10,
     colorByPoint: true,
-    //colors: ['#7cb5ec', '#434348', '#90ed7d']
     marker: {
       radius: 7,
       symbol: 'circle'
-      //fillColor: {
-      //radialGradient: {
-      //cx: 0.7,
-      //cy: 0.3,
-      //r: 0.5
-      //},
-      //stops: [
-      // [0, 'rgba(15,5,5,1)'],
-      //[1, 'rgba(220,0,215,1)']
-      //]
-      //}
     },
     data: [
       [9, 9, 1],
@@ -137,6 +125,13 @@ class ChartContainer extends Component {
     console.log("mousedown");
     console.log(this.refs.chart.getChart());
 
+    // this.setState({chartState: chart});
+  }
+  getChartFunc() {
+    return this.refs.chart.getChart();
+  }
+
+  click(eStart) {
     let chart = this.refs.chart.getChart();
     eStart = chart.pointer.normalize(eStart);
     let posX = eStart.pageX,

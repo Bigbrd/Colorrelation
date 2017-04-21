@@ -125,13 +125,6 @@ class ChartContainer extends Component {
     console.log("mousedown");
     console.log(this.refs.chart.getChart());
 
-    // this.setState({chartState: chart});
-  }
-  getChartFunc() {
-    return this.refs.chart.getChart();
-  }
-
-  click(eStart) {
     let chart = this.refs.chart.getChart();
     eStart = chart.pointer.normalize(eStart);
     let posX = eStart.pageX,

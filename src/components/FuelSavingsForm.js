@@ -25,6 +25,7 @@ class FuelSavingsForm extends React.Component {
 
     this.state = {
       showComponent: false,
+      selected: []
     };
     this._onButtonClick = this._onButtonClick.bind(this);
   }
@@ -141,37 +142,3 @@ FuelSavingsForm.propTypes = {
 };
 
 export default FuelSavingsForm;
-
-//trying to migrate this function into react
-// $(function () {
-//     // Add mouse events for rotation
-//     $('#chartie' ).bind('mousedown.hc touchstart.hc', function (eStart) {
-//         let chart = chartContainer.type.Highcharts.charts[0]; //I hate this.. it should all be inside react not jquery
-//         eStart = chart.pointer.normalize(eStart);
-
-//         let posX = eStart.pageX,
-//             posY = eStart.pageY,
-//             alpha = chart.options.chart.options3d.alpha,
-//             beta = chart.options.chart.options3d.beta,
-//             newAlpha,
-//             newBeta,
-//             sensitivity = 5; // lower is more sensitive
-
-//         $(document).bind({
-//             'mousemove.hc touchdrag.hc': function (e) {
-//                 // Run beta
-//                 newBeta = beta + (posX - e.pageX) / sensitivity;
-//                 chart.options.chart.options3d.beta = newBeta;
-
-//                 // Run alpha
-//                 newAlpha = alpha + (e.pageY - posY) / sensitivity;
-//                 chart.options.chart.options3d.alpha = newAlpha;
-
-//                 chart.redraw(false);
-//             },
-//             'mouseup touchend': function () {
-//                 $(document).unbind('.hc');
-//             }
-//         });
-//     });
-// });

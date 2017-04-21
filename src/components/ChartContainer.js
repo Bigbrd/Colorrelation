@@ -116,6 +116,7 @@ const config = {
 
 
 class ChartContainer extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -123,6 +124,7 @@ class ChartContainer extends Component {
     };
     this.click = this.click.bind(this);
   }
+
   componentDidMount() {
     let chart = this.getChartFunc();
     chart.series[0].addPoint({

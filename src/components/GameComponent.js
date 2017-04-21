@@ -11,6 +11,7 @@ class GameComponent extends React.Component {
 
     this.state = {
       showComponent: false,
+      selected: []
     };
     this._onButtonClick = this._onButtonClick.bind(this);
   }

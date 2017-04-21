@@ -8,9 +8,9 @@ Features/thoughts:
 
 
 Future:
--integrate with azure storage
+- integrate with azure storage
 - telemetry for each user, click, color selections, etc. that is getting stored.
 - pipe telemetry back into other users so that every user can see every other users favorite colors
 - pipe telemetry into azureml to get some correlations and clustering
--add questions for further clustering? 
+- add questions for further clustering? 
 - add email contact & CTA that we want visitors to go do "like this? follow us on twitter + subscribe for other cool correlation projects"

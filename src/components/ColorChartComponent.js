@@ -39,39 +39,39 @@ const config = {
       frame: {
         bottom: {
           size: 1,
-          color: 'rgba(250,0,0,0.1)'
+          color: 'rgba(255,0,0,0.1)'
         },
         back: {
           size: 1,
-          color: 'rgba(0,250,00,0.1)'
+          color: 'rgba(0,255,00,0.1)'
         },
         side: {
           size: 1,
-          color: 'rgba(0,0,250,0.1)'
+          color: 'rgba(0,0,255,0.1)'
         }
       }
     }
   },
   plotOptions: {
     scatter: {
-      width: 10,
-      height: 10,
-      depth: 10
+      width: 256,
+      height: 256,
+      depth: 256
     }
   },
   yAxis: {
     min: 0,
-    max: 10,
+    max: 255,
     title: null
   },
   xAxis: {
     min: 0,
-    max: 10,
+    max: 255,
     gridLineWidth: 1
   },
   zAxis: {
     min: 0,
-    max: 10,
+    max: 255,
     showFirstLabel: false
   },
   legend: {

@@ -12,25 +12,33 @@ class GameComponent extends React.Component {
       showComponent: false,
       selected: []
     };
-    this._onButtonClick = this._onButtonClick.bind(this);
+    this.handleEnterGameButtonClick = this.handleEnterGameButtonClick.bind(this);
   }
 
-  _onButtonClick() {
+  handleEnterGameButtonClick() {
     this.setState({
       showComponent: true,
     });
   }
 
+  handleSelectColor(color) {
+    //here should update the state to add the selected items.
+    
+    console.log('clickedcolor');
+    console.log(color);
+  }
+
+//probably should move the string of selected items to this page too.
 //this has state of the selected items
   render() {
     return (
       <div>
         <div>
           {this.state.showComponent ?
-            <ColorGridComponent selectColor={}/> :
+            <ColorGridComponent selectColor={this.handleSelectColor.bind(this)}/> :
 
             <li className="flex-item">
-                <button className="selectComponent" onClick={(e) => this._onButtonClick(e)}>Enter a game</button>
+                <button className="selectComponent" onClick={(e) => this.handleEnterGameButtonClick(e)}>Enter a game</button>
             </li>
           }
         </div>

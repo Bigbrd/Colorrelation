@@ -1,6 +1,7 @@
 // this is the one game we will allow to play to start off with
 import React, { Component } from 'react';
 import ColorHelper from '../utils/colorHelper';
+import ColorSquareComponent from './ColorSquareComponent';
 
   // has large padding of whitespace and info I for directions(that initially is open) and then in the center is a consistent sized gameGrid with varying amount of options
     // in gameGrid we have randomNum() of options and then the specific gameDivs (in this case colorDivs) which can be buttons that regen the random number and rerender
@@ -8,18 +9,13 @@ import ColorHelper from '../utils/colorHelper';
 // array of possible grid sizes of colors to choose from
 const gridSize = [4, 9, 16];
 // let squares = [];
-let ComponentContainer = (props) => (
-      <ul className="flex-container">{props.list}</ul>
-);
-ComponentContainer.propTypes = {
-  list: React.PropTypes.array,
-};
+
 
 export default class FavoriteColorComponent extends Component {
   constructor() {
     super();
     this.state = {
-      clickCount: 0,
+      clickCount: 0,//can remove, just do length of selected
       squares: [],
       selected: [],
       rAvg: -1,
@@ -92,7 +88,7 @@ export default class FavoriteColorComponent extends Component {
       <div>
         <p>Average Hex: {ColorHelper.decToHex(rAvg, gAvg, bAvg)} R, G, B: {rAvg}, {gAvg}, {bAvg}</p>
         <p>{this.state.selected.join(', ')}</p>
-        <ComponentContainer list={this.state.squares} />
+        <ColorSquareComponent list={this.state.squares} />
       </div>
     );
   }

@@ -11,7 +11,7 @@ const gridSize = [4, 9, 16];
 // let squares = [];
 
 
-export default class FavoriteColorComponent extends Component {
+export default class ColorGridComponent extends Component {
   constructor() {
     super();
     this.state = {
@@ -36,12 +36,20 @@ export default class FavoriteColorComponent extends Component {
   }
   getNewSquares(e) {
     if (e) e.preventDefault();
+    
+
+    //update the color averages
     const colorRGBArray = ColorHelper.rgbToDec(e.currentTarget.style.backgroundColor);
     this.updateAverages(colorRGBArray[0], colorRGBArray[1], colorRGBArray[2]);
+    
+    //call the update to the selected color
     const color = ColorHelper.decToHex(colorRGBArray[0], colorRGBArray[1], colorRGBArray[2]);
+    this.props.selectColor(color);
+    //rework this as a function to call randomGrid after selectColor
     const squaresArray = this.state.selected.slice();
     squaresArray.push(color);
     this.setState({
+      //no need for clickCount
       clickCount: this.state.clickCount + 1,
       selected: squaresArray,
     }, () => {
@@ -93,6 +101,10 @@ export default class FavoriteColorComponent extends Component {
     );
   }
 }
+
+ColorGridComponent.propTypes = {
+  selectColor: React.PropTypes.func,
+};
 // if color is light then make font dark, else keep it whitespace
 // keep a trail of "previously selected colors"? would that make you biased?
 // make them pick their favorite color initially to get a baseline and start the averages there

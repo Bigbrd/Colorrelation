@@ -1,5 +1,7 @@
 import React from 'react';
 
+//possibly add more strings here. color name, # of times selected?
+
 let ColorSquareComponent = (props) => (
       <ul className="flex-container">{props.list}</ul>
 );

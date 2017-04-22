@@ -5,6 +5,9 @@ Features/thoughts:
 - Make the chart really cool and styled
 - Clean up the rest of the website and add polish (I like the examples of: )
 - typescript? how to migrate over? am I missing any technologies here before getting deeper?
+-facebook/twitter like buttons.
+-google analytics
+-google fonts/material ui?
 
 
 Future:

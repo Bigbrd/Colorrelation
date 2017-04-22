@@ -113,21 +113,18 @@ const config = {
 };
 
 
-class ChartContainer extends Component {
+class ColorChartComponent extends Component {
 
   constructor() {
     super();
-    this.state = {
-      chartFoo: 'x'
-    };
     this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
   }
 
   componentDidMount() {
     let chart = this.refs.chart.getChart();
     chart.series[0].addPoint({
-      x: 10,
-      y: 12,
+      x: 8,
+      y: 2,
       z: 3
     });
 
@@ -171,18 +168,15 @@ class ChartContainer extends Component {
   }
 
   render() {
-    return ( < ReactHighcharts config = {
-        config
-      }
+    return ( <ReactHighcharts 
+      config = {config}
       ref = "chart"
-      domProps = {
-        {
+      domProps = {{
           id: 'chartie',
           onMouseDown: this.handleOnMouseDown
-        }
-      }
+      }}
       />);
     }
   }
 
-  export default ChartContainer;
+  export default ColorChartComponent;

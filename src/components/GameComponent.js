@@ -1,8 +1,8 @@
 import React from 'react';
-import ChartContainer from './ChartContainer';
+import ColorChartComponent from './ColorChartComponent';
 
 
-import FavoriteColorComponent from './FavoriteColorComponent';
+import ColorGridComponent from './ColorGridComponent';
 
 class GameComponent extends React.Component {
   constructor(props, context) {
@@ -21,23 +21,22 @@ class GameComponent extends React.Component {
     });
   }
 
+//this has state of the selected items
   render() {
     return (
       <div>
         <div>
           {this.state.showComponent ?
-            <FavoriteColorComponent /> :
+            <ColorGridComponent selectColor={}/> :
 
             <li className="flex-item">
-              <div className="mainMenuComponent">
                 <button className="selectComponent" onClick={(e) => this._onButtonClick(e)}>Enter a game</button>
-              </div>
             </li>
           }
         </div>
 
         <div>
-          <ChartContainer />
+          <ColorChartComponent />
         </div>
 
       </div>

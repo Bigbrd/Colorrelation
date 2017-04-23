@@ -1,13 +1,12 @@
 // this is the one game we will allow to play to start off with
 import React, { Component } from 'react';
 import ColorHelper from '../utils/colorHelper';
-import ColorSquareComponent from './ColorSquareComponent';
 
   // has large padding of whitespace and info I for directions(that initially is open) and then in the center is a consistent sized gameGrid with varying amount of options
     // in gameGrid we have randomNum() of options and then the specific gameDivs (in this case colorDivs) which can be buttons that regen the random number and rerender
       // each colorDiv has randomColor() or randomAnswer() pulled from DB, etc.
 // array of possible grid sizes of colors to choose from
-const gridSize = [4, 9, 16];
+const gridSize = [4];
 // let squares = [];
 
 
@@ -71,17 +70,17 @@ export default class ColorGridComponent extends Component {
   }
   
   randomGrid() {
+    //random size square. currently locking at just 4
     const size = gridSize[Math.floor(Math.random() * gridSize.length)];
-    console.log(size);
     const newSquares = [];
-    const squareSize = 100 / Math.sqrt(size);
+    // const squareSize = 100 / Math.sqrt(size);
     for (let i = 0; i < size; i++) {
       // create color square with button and store method on click rerender grid
       const color = ColorHelper.randomColor();
       newSquares.push(
-        <div className="colorSquare" style={{ height: squareSize + '%', flex: '0 0 ' + squareSize + '%' }}>
+        // this doesnt work?<div className="colorSquare" style={{ height: squareSize + '%', flex: '0 0 ' + squareSize + '%' }}>
           <div className="colorButton" style={{ backgroundColor: color }} onClick={(e) => this.getNewSquares(e)}>{ColorHelper.rgbToHex(color)}</div>
-        </div>
+        // </div>
       );
     }
     this.setState({
@@ -96,7 +95,11 @@ export default class ColorGridComponent extends Component {
       <div>
         <p>Average Hex: {ColorHelper.decToHex(rAvg, gAvg, bAvg)} R, G, B: {rAvg}, {gAvg}, {bAvg}</p>
         <p>{this.state.selected.join(', ')}</p>
-        <ColorSquareComponent list={this.state.squares} />
+        <div className="flex-container">
+        {this.state.squares.map((squares, opt) =>
+          <div key={opt} className="colorSquare">{squares}</div>)
+        }
+        </div>
       </div>
     );
   }

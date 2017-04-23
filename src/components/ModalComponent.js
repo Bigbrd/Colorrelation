@@ -4,7 +4,7 @@ import React from 'react';
 class ModalComponent extends React.Component {
     render() {
     return (
-      <div className="modal" style="display: none;">
+      <div className="modal" style={{display: 'none'}}>
         <div className="modal-overlay" />
         <div className="modal-content">
             <a href="javascript:;" className="modal-close">╋</a>

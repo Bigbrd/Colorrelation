@@ -9,7 +9,7 @@ class HeaderComponent extends React.Component {
     return (
     <header>
           <a href="javascript:;" id="logo">Colorrelation</a>
-          <a href="http://thestocks.im?ref=flatuicolors.com" target="_blank" className="btn btn2 double">Check this out</a>
+          <a href="https://twitter.com/brDick" target="_blank" className="btn btn2 double">Check this out</a>
     </header>
     );
   }

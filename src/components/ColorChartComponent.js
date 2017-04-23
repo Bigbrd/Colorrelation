@@ -24,7 +24,7 @@ const config = {
         console.log("load!");
       }
     },
-    margin: 100,
+    margin: 10,
     type: 'scatter',
     //zoomType: 'xy', if we want to zoom in
     // panning: true,
@@ -130,14 +130,13 @@ class ColorChartComponent extends Component {
 
   }
 
-  handleOnMouseDown(eStart) {
-    console.log("mousedown");
-    console.log(this.refs.chart.getChart());
-
+  handleOnMouseDown(ev) {
+    //persist the chart because we manage this event always    
+    ev.persist();
     let chart = this.refs.chart.getChart();
-    eStart = chart.pointer.normalize(eStart);
-    let posX = eStart.pageX,
-      posY = eStart.pageY,
+    ev = chart.pointer.normalize(ev);
+    let posX = ev.pageX,
+      posY = ev.pageY,
       alpha = chart.options.chart.options3d.alpha,
       beta = chart.options.chart.options3d.beta,
       newAlpha,
@@ -145,7 +144,6 @@ class ColorChartComponent extends Component {
       sensitivity = 5; // lower is more sensitive
 
     function onMouseMove(e) {
-      console.log("mousemove");
       newBeta = beta + (posX - e.pageX) / sensitivity;
       chart.options.chart.options3d.beta = newBeta;
 
@@ -157,13 +155,13 @@ class ColorChartComponent extends Component {
     }
 
     function onMouseUp() {
-      console.log("mouseup");
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     }
 
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
+    
 
   }
 

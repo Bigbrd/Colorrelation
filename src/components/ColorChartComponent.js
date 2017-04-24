@@ -24,11 +24,12 @@ const config = {
         console.log("load!");
       }
     },
-    //margin: 10,
+    // margin: 100,
     type: 'scatter',
     //zoomType: 'xy', if we want to zoom in
     // panning: true,
     // panKey: 'shift',
+    
     options3d: {
       enabled: true,
       alpha: 10,
@@ -52,24 +53,46 @@ const config = {
       }
     }
   },
-  // plotOptions: {
-  //   scatter: {
-  //     width: 256,
-  //     height: 256,
-  //     depth: 256
-  //   }
-  // },
-  yAxis: {
-    min: 0,
-    max: 255,
-    title: null
+  title: {
+      useHTML: true,
+      x: -10,
+      y: 8,
+      text: '<span class="chart-title">Color Chart</span>'
+    },
+  tooltip: {
+      formatter: function() {
+        let p = this.point;
+        return 'Red: <b>' + p.x +
+          '</b><br/> Green: <b>' + p.y +
+          '</b><br/> Blue: <b>' + p.z + '</b>';
+      }
+  },
+  plotOptions: {
+    // scatter: {
+    //   width: 256,
+    //   height: 256,
+    //   depth: 256
+    // }
   },
   xAxis: {
+    title: {
+        text: 'Red'
+    },
     min: 0,
     max: 255,
     gridLineWidth: 1
   },
+  yAxis: {
+    title: {
+        text: 'Green'
+    },
+    min: 0,
+    max: 255,
+  },
   zAxis: {
+    title: {
+        text: 'Blue'
+    },
     min: 0,
     max: 255,
     showFirstLabel: false
@@ -81,8 +104,9 @@ const config = {
   series: [{
     name: 'Data',
     //zIndex: 10,
-    colorByPoint: true,
-    //colors: ['#7cb5ec', '#434348', '#90ed7d']
+    animation: {
+      duration: 0
+    },
     marker: {
       radius: 7,
       symbol: 'circle'
@@ -122,7 +146,7 @@ class ColorChartComponent extends Component {
       y: colorRGBArray[1],
       z: colorRGBArray[2],
       color: colorString
-    }, true, false, true);
+    }, false);
   }
 
   handleOnMouseDown(ev) {

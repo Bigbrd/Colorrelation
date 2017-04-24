@@ -24,7 +24,7 @@ const config = {
         console.log("load!");
       }
     },
-    margin: 10,
+    //margin: 10,
     type: 'scatter',
     //zoomType: 'xy', if we want to zoom in
     // panning: true,
@@ -34,8 +34,8 @@ const config = {
       alpha: 10,
       beta: 50,
       depth: 450,
-      viewDistance: 5,
-      fitToPlot: false,
+      viewDistance: 10,
+      // fitToPlot: false,
       frame: {
         bottom: {
           size: 1,
@@ -43,7 +43,7 @@ const config = {
         },
         back: {
           size: 1,
-          color: 'rgba(0,255,00,0.1)'
+          color: 'rgba(0,255,0,0.1)'
         },
         side: {
           size: 1,
@@ -52,13 +52,13 @@ const config = {
       }
     }
   },
-  plotOptions: {
-    scatter: {
-      width: 256,
-      height: 256,
-      depth: 256
-    }
-  },
+  // plotOptions: {
+  //   scatter: {
+  //     width: 256,
+  //     height: 256,
+  //     depth: 256
+  //   }
+  // },
   yAxis: {
     min: 0,
     max: 255,
@@ -80,7 +80,7 @@ const config = {
   //and have series1 and 2 and 3 be the ones we didnt select!
   series: [{
     name: 'Data',
-    zIndex: 10,
+    //zIndex: 10,
     colorByPoint: true,
     //colors: ['#7cb5ec', '#434348', '#90ed7d']
     marker: {
@@ -114,13 +114,15 @@ class ColorChartComponent extends Component {
   componentDidMount() {
   }
 
-  handleNewPoint(colorRGBArray) {
+  handleNewPoint(colorRGBArray, colorString) {
     let chart = this.refs.chart.getChart();
+    //how to add the point to the chart without redrawing
     chart.series[0].addPoint({
       x: colorRGBArray[0],
       y: colorRGBArray[1],
-      z: colorRGBArray[2]
-    });
+      z: colorRGBArray[2],
+      color: colorString
+    }, true, false, true);
   }
 
   handleOnMouseDown(ev) {

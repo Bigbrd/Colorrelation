@@ -22,10 +22,10 @@ class GameComponent extends React.Component {
   }
 
   handleSelectColor(colorRGBArray) {
-    this.colorChart.handleNewPoint(colorRGBArray);
 
     //here should update the state to add the selected items.
     const color = ColorHelper.decToHex(colorRGBArray[0], colorRGBArray[1], colorRGBArray[2]);
+    this.colorChart.handleNewPoint(colorRGBArray, color);
     const squaresArray = this.state.selected.slice();
     squaresArray.push(color);
     this.setState({

@@ -29,7 +29,7 @@ const config = {
     //zoomType: 'xy', if we want to zoom in
     // panning: true,
     // panKey: 'shift',
-    spacing: [50,50,60,50],
+    spacing: [30,30,40,30],
     options3d: {
       enabled: true,
       alpha: 10,
@@ -150,7 +150,7 @@ class ColorChartComponent extends Component {
       y: colorRGBArray[1],
       z: colorRGBArray[2],
       color: colorString
-    }, false);
+    });
   }
 
   handleOnMouseDown(ev) {

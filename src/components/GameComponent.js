@@ -42,9 +42,9 @@ class GameComponent extends React.Component {
           {this.state.showComponent ?
             <ColorGridComponent selectColor={this.handleSelectColor.bind(this)} selected={this.state.selected}/> :
 
-            <li className="flex-item">
+            <div className="flex-container">
                 <button className="selectComponent" onClick={(e) => this.handleEnterGameButtonClick(e)}>Enter a game</button>
-            </li>
+            </div>
           }
         </div>
 

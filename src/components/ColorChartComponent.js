@@ -118,6 +118,7 @@ class ColorChartComponent extends Component {
   constructor() {
     super();
     this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
+    this.handleNewPoint = this.handleNewPoint.bind(this);
   }
 
   componentDidMount() {
@@ -126,8 +127,17 @@ class ColorChartComponent extends Component {
       x: 8,
       y: 2,
       z: 3
-    });
+    }); //and have series1 and 2 and 3 be the ones we didnt select!
 
+  }
+
+  handleNewPoint(color) {
+    let chart = this.refs.chart.getChart();
+    chart.series[0].addPoint({
+      x: 82,
+      y: 22,
+      z: 32
+    });
   }
 
   handleOnMouseDown(ev) {

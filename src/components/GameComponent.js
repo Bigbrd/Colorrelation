@@ -26,6 +26,13 @@ class GameComponent extends React.Component {
     
     console.log('clickedcolor');
     console.log(color);
+    const squaresArray = this.state.selected.slice();
+    squaresArray.push(color);
+    this.setState({
+      selected: squaresArray,
+    });
+
+    this.foo.handleNewPoint(color);
   }
 
 //probably should move the string of selected items to this page too.
@@ -34,8 +41,9 @@ class GameComponent extends React.Component {
     return (
       <div>
         <div>
+          <p>{this.state.selected.join(', ')}</p>
           {this.state.showComponent ?
-            <ColorGridComponent selectColor={this.handleSelectColor.bind(this)}/> :
+            <ColorGridComponent selectColor={this.handleSelectColor.bind(this)} selected={this.state.selected}/> :
 
             <li className="flex-item">
                 <button className="selectComponent" onClick={(e) => this.handleEnterGameButtonClick(e)}>Enter a game</button>
@@ -44,7 +52,7 @@ class GameComponent extends React.Component {
         </div>
 
         <div>
-          <ColorChartComponent />
+          <ColorChartComponent ref={(foo) => { this.foo = foo; }} selected={this.state.selected}/>
         </div>
 
       </div>

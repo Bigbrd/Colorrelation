@@ -14,9 +14,7 @@ export default class ColorGridComponent extends Component {
   constructor() {
     super();
     this.state = {
-      clickCount: 0,//can remove, just do length of selected
       squares: [],
-      selected: [],
       rAvg: -1,
       gAvg: -1,
       bAvg: -1,
@@ -24,9 +22,7 @@ export default class ColorGridComponent extends Component {
   }
   componentWillMount() {
     this.setState({
-      clickCount: 0,
       squares: [],
-      selected: [],
       rAvg: -1,
       gAvg: -1,
       bAvg: -1,
@@ -35,7 +31,6 @@ export default class ColorGridComponent extends Component {
   }
   getNewSquares(e) {
     if (e) e.preventDefault();
-    
 
     //update the color averages
     const colorRGBArray = ColorHelper.rgbToDec(e.currentTarget.style.backgroundColor);
@@ -44,20 +39,12 @@ export default class ColorGridComponent extends Component {
     //call the update to the selected color
     const color = ColorHelper.decToHex(colorRGBArray[0], colorRGBArray[1], colorRGBArray[2]);
     this.props.selectColor(color);
-    //rework this as a function to call randomGrid after selectColor
-    const squaresArray = this.state.selected.slice();
-    squaresArray.push(color);
-    this.setState({
-      //no need for clickCount
-      clickCount: this.state.clickCount + 1,
-      selected: squaresArray,
-    }, () => {
-      this.randomGrid();
-    });
+    //get new grid
+    this.randomGrid();
   }
   updateAverages(r, g, b) {
       // update color averages
-      const count = this.state.clickCount;
+      const count = this.props.selected.length;
       //count needs to be 0 and averages should be anything
       const rNew = Math.floor((r + (this.state.rAvg * count)) / (count + 1));
       const gNew = Math.floor((g + (this.state.gAvg * count)) / (count + 1));
@@ -87,14 +74,15 @@ export default class ColorGridComponent extends Component {
       squares: newSquares,
     });
   }
+
   render() {
     const rAvg = this.state.rAvg;
     const gAvg = this.state.gAvg;
     const bAvg = this.state.bAvg;
     return (
       <div>
-        <p>Average Hex: {ColorHelper.decToHex(rAvg, gAvg, bAvg)} R, G, B: {rAvg}, {gAvg}, {bAvg}</p>
-        <p>{this.state.selected.join(', ')}</p>
+        <p>Average Hex from {this.props.selected.length} clicks: {ColorHelper.decToHex(rAvg, gAvg, bAvg)} R, G, B: {rAvg}, {gAvg}, {bAvg}</p>
+        
         <div className="flex-container">
         {this.state.squares.map((squares, opt) =>
           <div key={opt} className="colorSquare">{squares}</div>)
@@ -107,6 +95,7 @@ export default class ColorGridComponent extends Component {
 
 ColorGridComponent.propTypes = {
   selectColor: React.PropTypes.func,
+  selected: React.PropTypes.array
 };
 // if color is light then make font dark, else keep it whitespace
 // keep a trail of "previously selected colors"? would that make you biased?

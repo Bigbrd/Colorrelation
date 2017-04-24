@@ -77,7 +77,7 @@ const config = {
   legend: {
     enabled: false
   },
-
+  //and have series1 and 2 and 3 be the ones we didnt select!
   series: [{
     name: 'Data',
     zIndex: 10,
@@ -98,17 +98,7 @@ const config = {
       //]
       //}
     },
-    data: [
-      [9, 9, 1],
-      [8, 8, 2],
-      [7, 7, 3],
-      [6, 6, 4],
-      [5, 5, 5],
-      [4, 4, 6],
-      [3, 3, 7],
-      [2, 2, 8],
-      [1, 1, 9]
-    ]
+    data: []
   }]
 };
 
@@ -122,21 +112,14 @@ class ColorChartComponent extends Component {
   }
 
   componentDidMount() {
-    let chart = this.refs.chart.getChart();
-    chart.series[0].addPoint({
-      x: 8,
-      y: 2,
-      z: 3
-    }); //and have series1 and 2 and 3 be the ones we didnt select!
-
   }
 
-  handleNewPoint(color) {
+  handleNewPoint(colorRGBArray) {
     let chart = this.refs.chart.getChart();
     chart.series[0].addPoint({
-      x: 82,
-      y: 22,
-      z: 32
+      x: colorRGBArray[0],
+      y: colorRGBArray[1],
+      z: colorRGBArray[2]
     });
   }
 

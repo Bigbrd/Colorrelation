@@ -11,6 +11,7 @@ const gridSize = [4];
 
 
 export default class ColorGridComponent extends Component {
+  
   constructor() {
     super();
     this.state = {
@@ -20,6 +21,7 @@ export default class ColorGridComponent extends Component {
       bAvg: -1,
     };
   }
+
   componentWillMount() {
     this.setState({
       squares: [],
@@ -29,19 +31,18 @@ export default class ColorGridComponent extends Component {
     });
     this.randomGrid();
   }
+
   getNewSquares(e) {
     if (e) e.preventDefault();
-
     //update the color averages
     const colorRGBArray = ColorHelper.rgbToDec(e.currentTarget.style.backgroundColor);
     this.updateAverages(colorRGBArray[0], colorRGBArray[1], colorRGBArray[2]);
-    
     //call the update to the selected color
-    const color = ColorHelper.decToHex(colorRGBArray[0], colorRGBArray[1], colorRGBArray[2]);
-    this.props.selectColor(color);
+    this.props.selectColor(colorRGBArray);
     //get new grid
     this.randomGrid();
   }
+
   updateAverages(r, g, b) {
       // update color averages
       const count = this.props.selected.length;
@@ -55,7 +56,7 @@ export default class ColorGridComponent extends Component {
         bAvg: bNew,
       });
   }
-  
+
   randomGrid() {
     //random size square. currently locking at just 4
     const size = gridSize[Math.floor(Math.random() * gridSize.length)];
@@ -74,7 +75,7 @@ export default class ColorGridComponent extends Component {
       squares: newSquares,
     });
   }
-
+  
   render() {
     const rAvg = this.state.rAvg;
     const gAvg = this.state.gAvg;

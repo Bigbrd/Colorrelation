@@ -1,8 +1,8 @@
 import React from 'react';
 import ColorChartComponent from './ColorChartComponent';
-
-
 import ColorGridComponent from './ColorGridComponent';
+import ColorHelper from '../utils/colorHelper';
+
 
 class GameComponent extends React.Component {
   constructor(props, context) {
@@ -21,22 +21,19 @@ class GameComponent extends React.Component {
     });
   }
 
-  handleSelectColor(color) {
+  handleSelectColor(colorRGBArray) {
+    this.colorChart.handleNewPoint(colorRGBArray);
+
     //here should update the state to add the selected items.
-    
-    console.log('clickedcolor');
-    console.log(color);
+    const color = ColorHelper.decToHex(colorRGBArray[0], colorRGBArray[1], colorRGBArray[2]);
     const squaresArray = this.state.selected.slice();
     squaresArray.push(color);
     this.setState({
       selected: squaresArray,
     });
 
-    this.foo.handleNewPoint(color);
   }
 
-//probably should move the string of selected items to this page too.
-//this has state of the selected items
   render() {
     return (
       <div>
@@ -52,7 +49,7 @@ class GameComponent extends React.Component {
         </div>
 
         <div>
-          <ColorChartComponent ref={(foo) => { this.foo = foo; }} selected={this.state.selected}/>
+          <ColorChartComponent ref={(colorChart) => { this.colorChart = colorChart; }}/>
         </div>
 
       </div>

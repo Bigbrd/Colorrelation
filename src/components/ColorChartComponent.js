@@ -24,18 +24,18 @@ const config = {
         console.log("load!");
       }
     },
-    // margin: 100,
+    // margin: 10,
     type: 'scatter',
     //zoomType: 'xy', if we want to zoom in
     // panning: true,
     // panKey: 'shift',
-    
+    spacing: [50,50,60,50],
     options3d: {
       enabled: true,
       alpha: 10,
-      beta: 50,
-      depth: 450,
-      viewDistance: 10,
+      beta: 20,
+      depth: 356,
+      viewDistance: 300,
       // fitToPlot: false,
       frame: {
         bottom: {
@@ -53,12 +53,16 @@ const config = {
       }
     }
   },
+  //add drilldown for when you click an item, show the ones you could have selected
+  credits: {
+      enabled: false
+  },
   title: {
       useHTML: true,
       x: -10,
       y: 8,
       text: '<span class="chart-title">Color Chart</span>'
-    },
+  },
   tooltip: {
       formatter: function() {
         let p = this.point;

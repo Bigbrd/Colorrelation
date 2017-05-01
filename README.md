@@ -9,6 +9,7 @@ Features/thoughts:
 -google analytics
 -google fonts/material ui?
 -ask gender and age!
+-ability to reset
 
 
 

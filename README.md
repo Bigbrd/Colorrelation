@@ -10,6 +10,7 @@ Features/thoughts:
 -google fonts/material ui?
 -ask gender and age!
 -ability to reset
+-scale the size of the circle like 1/100 of the amount already selected.
 
 
 

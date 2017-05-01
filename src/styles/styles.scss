@@ -53,8 +53,8 @@ td.fuel-savings-label { width: 175px; }
   
   justify-content: space-around;
   
-  height: 50vmax;
-  width: 50vmax;
+  height: 30vmax;
+  width: 30vmax;
 }
 
 .flex-item {
@@ -97,3 +97,7 @@ td.fuel-savings-label { width: 175px; }
 }
 
 //dark gray as the full style of the page would be cool. no white background.
+#plot {
+    display: flex;
+    justify-content: center;
+}

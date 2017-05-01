@@ -4,29 +4,28 @@ import React, {
 } from 'react';
 // let Plotly = require('plotly.js');
 
-
 const data = [{
-    x: [2],
-    y: [3],
-    z: [4],
+    x: [],
+    y: [],
+    z: [],
     mode: 'markers',
     type: 'scatter3d',
     marker: {
-      color: 'rgb(23, 190, 207)',
-      size: 2
+      color: [],
+      size: 12
     }
 },{
     alphahull: 7,
     opacity: 0.1,
     type: 'mesh3d',
-    x: [2],
-    y: [3],
-    z: [4],
+    x: [],
+    y: [],
+    z: [],
 }];
 
 const layout = {
     autosize: true,
-    height: 480,
+    height: 700,
     scene: {
         aspectratio: {
             x: 1,
@@ -40,9 +39,9 @@ const layout = {
                 z: 0
             },
             eye: {
-                x: 1.25,
-                y: 1.25,
-                z: 1.25
+                x: 1.35,
+                y: 1.35,
+                z: 1.35
             },
             up: {
                 x: 0,
@@ -52,19 +51,31 @@ const layout = {
         },
         xaxis: {
             type: 'linear',
-            zeroline: false
+            zeroline: false,
+            title: "Red",
+            range: [0,255],
+            // showbackground: true,
+            // backgroundcolor: "rgba(255, 0, 0, .1)",
         },
         yaxis: {
             type: 'linear',
-            zeroline: false
+            zeroline: false,
+            title: "Green",
+            range: [0,255],
+            // showbackground: true,
+            // backgroundcolor: "rgba(0, 255, 0, .1)",
         },
         zaxis: {
             type: 'linear',
-            zeroline: false
+            zeroline: false,
+            title: "Blue",
+            range: [0,255],            
+            // showbackground: true,
+            // backgroundcolor: "rgba(0, 0, 255, .1)",
         }
     },
-    title: '3d point clustering',
-    width: 477
+    title: '3d clustering colorration',
+    width: 700
 };
 
 
@@ -72,7 +83,6 @@ class ColorChartComponent extends Component {
 
   constructor() {
     super();
-    this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
     this.handleNewPoint = this.handleNewPoint.bind(this);
   }
 
@@ -88,54 +98,14 @@ class ColorChartComponent extends Component {
   //myPlot.on('plotly_hover', function(data){
 
   handleNewPoint(colorRGBArray, colorString) {
-    Plotly.extendTraces("plot", {
+    let plot = document.getElementById('plot');
+    plot.data[0].marker.color.push(colorString);
+    let update = {
       x: [[ colorRGBArray[0] ]],
       y: [[ colorRGBArray[1] ]],
-      z: [[ colorRGBArray[2] ]]
-    }, [0]);
-    // let chart = this.refs.chart.getChart();
-    // //how to add the point to the chart without redrawing
-    // chart.series[0].addPoint({
-    //   x: colorRGBArray[0],
-    //   y: colorRGBArray[1],
-    //   z: colorRGBArray[2],
-    //   color: colorString
-    // });
-  }
-
-  handleOnMouseDown(ev) {
-    //persist the chart because we manage this event always    
-    ev.persist();
-    let chart = this.refs.chart.getChart();
-    ev = chart.pointer.normalize(ev);
-    let posX = ev.pageX,
-      posY = ev.pageY,
-      alpha = chart.options.chart.options3d.alpha,
-      beta = chart.options.chart.options3d.beta,
-      newAlpha,
-      newBeta,
-      sensitivity = 5; // lower is more sensitive
-
-    function onMouseMove(e) {
-      newBeta = beta + (posX - e.pageX) / sensitivity;
-      chart.options.chart.options3d.beta = newBeta;
-
-      // Run alpha
-      newAlpha = alpha + (e.pageY - posY) / sensitivity;
-      chart.options.chart.options3d.alpha = newAlpha;
-
-      chart.redraw(false);
-    }
-
-    function onMouseUp() {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    }
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-    
-
+      z: [[ colorRGBArray[2] ]],
+    };
+    Plotly.extendTraces("plot", update, [0]);
   }
 
   render() {
@@ -143,17 +113,9 @@ class ColorChartComponent extends Component {
       <div 
         ref="chart"
         id="plot"
-        //onMouseDown: this.handleOnMouseDown
       />
     );
   }
 }
 
 export default ColorChartComponent;
-
-// //config = {config}
-//       ref = "chart"
-//       domProps = {{
-//           id: 'chartie',
-//           onMouseDown: this.handleOnMouseDown
-//       }}

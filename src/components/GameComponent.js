@@ -11,6 +11,7 @@ class GameComponent extends React.Component {
     this.state = {
       showComponent: false,
       selected: []
+      //possibly add colorRGBArray shown?
     };
     this.handleEnterGameButtonClick = this.handleEnterGameButtonClick.bind(this);
   }
@@ -47,10 +48,11 @@ class GameComponent extends React.Component {
             </div>
           }
         </div>
+        <ColorChartComponent
+            ref={(colorChart) => { this.colorChart = colorChart; }}
+            //type="scatter"
+          />
 
-        <div>
-          <ColorChartComponent ref={(colorChart) => { this.colorChart = colorChart; }}/>
-        </div>
 
       </div>
     );
@@ -59,3 +61,6 @@ class GameComponent extends React.Component {
 
 
 export default GameComponent;
+
+// {/*xData={this.state.dates}
+            // yData={this.state.temps}*/}

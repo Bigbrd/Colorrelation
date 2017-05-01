@@ -8,6 +8,8 @@ Features/thoughts:
 -facebook/twitter like buttons.
 -google analytics
 -google fonts/material ui?
+-ask gender and age!
+
 
 
 Future:

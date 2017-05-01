@@ -5,12 +5,12 @@ Features/thoughts:
 - Make the chart really cool and styled
 - Clean up the rest of the website and add polish (I like the examples of: )
 - typescript? how to migrate over? am I missing any technologies here before getting deeper?
--facebook/twitter like buttons.
--google analytics
--google fonts/material ui?
--ask gender and age!
--ability to reset
--scale the size of the circle like 1/100 of the amount already selected.
+- facebook/twitter like buttons.
+- google analytics
+- google fonts/material ui?
+- ask gender and age!
+- ability to reset
+- scale the size of the circle like 1/100 of the amount already selected.
 
 
 

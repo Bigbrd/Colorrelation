@@ -17,9 +17,8 @@
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist && npm run lint && npm run test",
+    "prebuild": "npm run clean-dist && npm run lint",
     "build": "babel-node tools/build.js",
-    "test": "jest",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -46,7 +45,6 @@
     "babel-cli": "6.18.0",
     "babel-core": "6.20.0",
     "babel-eslint": "7.1.1",
-    "babel-jest": "18.0.0",
     "babel-loader": "6.2.10",
     "babel-plugin-transform-react-constant-elements": "6.9.1",
     "babel-plugin-transform-react-remove-prop-types": "0.2.11",
@@ -70,7 +68,6 @@
     "gh-pages": "0.12.0",
     "html-webpack-plugin": "2.24.1",
     "identity-obj-proxy": "3.0.0",
-    "jest": "18.1.0",
     "json-loader": "0.5.4",
     "mockdate": "2.0.1",
     "node-sass": "^4.5.2",
@@ -97,12 +94,6 @@
   "repository": {
     "type": "git",
     "url": ""
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|scss)$": "identity-obj-proxy",
-      "^.+\\.(gif|ttf|eot|svg|woff|woff2|ico)$": "<rootDir>/tools/fileMock.js"
-    }
   },
   "babel": {
     "presets": [
@@ -162,8 +153,7 @@
       "es6": true,
       "browser": true,
       "node": true,
-      "jquery": true,
-      "jest": true
+      "jquery": true
     },
     "rules": {
       "quotes": 0,

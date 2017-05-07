@@ -25,7 +25,15 @@ const data = [{
 
 const layout = {
     autosize: true,
-    height: 700,
+    height: 550,
+    width: 550,
+    margin: {
+        l: 0,
+        r: 0,
+        b: 0,
+        t: 0,
+        pad: 4
+    },
     scene: {
         aspectratio: {
             x: 1,
@@ -74,8 +82,7 @@ const layout = {
             // backgroundcolor: "rgba(0, 0, 255, .1)",
         }
     },
-    title: '3d clustering colorration',
-    width: 700
+    title: ''
 };
 
 
@@ -87,7 +94,7 @@ class ColorChartComponent extends Component {
   }
 
   componentDidMount() {
-    Plotly.newPlot('plot', data, layout);
+    Plotly.newPlot('plot', data, layout, {displayModeBar: false});
   }
 
   // drawPlot = () => {

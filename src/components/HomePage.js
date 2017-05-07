@@ -3,6 +3,7 @@ import React from 'react';
 import ModalComponent from "./ModalComponent";
 import HeaderComponent from "./HeaderComponent";
 import GameComponent from "./GameComponent";
+import FooterComponent from "./FooterComponent";
 
 const HomePage = () => {
   return (
@@ -10,7 +11,8 @@ const HomePage = () => {
       <ModalComponent/>
       <HeaderComponent/>
       <GameComponent/>   
-    </div>   
+      <FooterComponent/>   
+    </div>
   );
 };
 

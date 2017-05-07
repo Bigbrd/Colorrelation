@@ -67,7 +67,7 @@ export default class ColorGridComponent extends Component {
       const color = ColorHelper.randomColor();
       newSquares.push(
         // this doesnt work?<div className="colorSquare" style={{ height: squareSize + '%', flex: '0 0 ' + squareSize + '%' }}>
-          <div className="colorButton" style={{ backgroundColor: color }} onClick={(e) => this.getNewSquares(e)}>{ColorHelper.rgbToHex(color)}</div>
+          <div className="colorButton" style={{ backgroundColor: color }} onClick={(e) => this.getNewSquares(e)}></div>
         // </div>
       );
     }
@@ -81,9 +81,8 @@ export default class ColorGridComponent extends Component {
     const gAvg = this.state.gAvg;
     const bAvg = this.state.bAvg;
     return (
-      <div>
-        <p>Average Hex from {this.props.selected.length} clicks: {ColorHelper.decToHex(rAvg, gAvg, bAvg)} R, G, B: {rAvg}, {gAvg}, {bAvg}</p>
-        
+      <div className="centered">
+        <h2> Pick your favorite color! </h2>        
         <div className="flex-container">
         {this.state.squares.map((squares, opt) =>
           <div key={opt} className="colorSquare">{squares}</div>)

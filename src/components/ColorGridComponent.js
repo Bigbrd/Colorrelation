@@ -77,9 +77,6 @@ export default class ColorGridComponent extends Component {
   }
   
   render() {
-    const rAvg = this.state.rAvg;
-    const gAvg = this.state.gAvg;
-    const bAvg = this.state.bAvg;
     return (
       <div className="centered">
         <h2> Pick your favorite color! </h2>        

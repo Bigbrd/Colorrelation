@@ -2,6 +2,7 @@
   "name": "aimini",
   "version": "0.1.0",
   "description": "mini games with color prediction and integration with AzureML + cool 3d charts",
+  "homepage": "https://bigbrd.github.io/Colorrelation",
   "engines": {
     "npm": ">=3"
   },
@@ -17,14 +18,16 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
-    "build": "babel-node tools/build.js && npm run open:dist",
+    "build": "babel-node tools/build.js",
     "test": "jest",
     "test:CI": "babel-node tools/testCi.js",
     "test:cover": "npm run test -- --coverage ",
     "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/lcov-report/index.html",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Bryan Dickens",
   "license": "MIT",
@@ -70,6 +73,7 @@
     "eslint-watch": "2.1.14",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "0.9.0",
+    "gh-pages": "0.12.0",
     "html-webpack-plugin": "2.24.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "18.1.0",

@@ -20,5 +20,3 @@ we launch tools for designers, developers and entrepreneurs.</p>
   }
 }
 export default ModalComponent;
-
-

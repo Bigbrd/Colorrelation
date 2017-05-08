@@ -34,15 +34,14 @@ let data = {
   "GlobalParameters": {}
 };
 
+let model = {};
+
 function getPred(data) {
   console.log("===getPred()===");
   let dataString = JSON.stringify(data);
   
-  //these are secrets that need to be hidden somehow.
-//   let host = "ussouthcentral.services.azureml.net";
-//   let path = "/subscriptions/17747feb8f364e5b8e23a2d2ca7d96f7/services/d1d5e5a79e9e40b290c60c080cc57dc0/execute?api-version=2.0&format=swagger"
+  //these are secrets that are hidden in config.js
   let method = "POST";
-//   let api_key = "cRUk+ge5ohSld3228wI+6HDLopFtu6+N7oWHiXSUc6klbdCCweS2wsuU/SXIUKu4U/vKhZcy+13lR6DuWhtXZw==";
     let host = config.host;
   let path = config.path;
     let api_key = config.api_key;
@@ -53,7 +52,6 @@ function getPred(data) {
   };
 
   let options = {
-    //url: url,
     host: host,
     port: 443,
     path: path,
@@ -68,6 +66,8 @@ function getPred(data) {
   console.log("options: " + options);
 
 
+  let mlData = ''; //THIS IS THE OUTPUT.
+
 
   let reqPost = https.request(options, function (res) {
     console.log("===reqPost()===");
@@ -76,13 +76,16 @@ function getPred(data) {
 
     res.on("data", function (d) {
         console.log("===ondata===");
-        // console.log("write d: ", d);
         process.stdout.write(d);
+        mlData += d;
     });
 
     // Would need more parsing out of prediction from the result here
     res.on("end", () => {
         console.log("===onend===");
+        let reqData = JSON.stringify(mlData);
+        console.log(reqData);
+        //HERE is where I should write this out somewhere.
     });
 
   });

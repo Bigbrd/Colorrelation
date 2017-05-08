@@ -1,9 +1,11 @@
 Features/thoughts:
 
-- get launch.json to be able to commit github stuff in vscode & to debug javascript componentdidmount in vscode
-- Get the click to render a bubble on the scatter plot
+-Make ML server and plug in the functions
+
 - Make the chart really cool and styled
-- Clean up the rest of the website and add polish (I like the examples of: )
+- Clean up the rest of the website and add polish (I like the examples of: http://materialuicolors.co/
+http://actionpotential.jeremyrgordon.com/app/public
+)
 - typescript? how to migrate over? am I missing any technologies here before getting deeper?
 - facebook/twitter like buttons.
 - google analytics

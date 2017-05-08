@@ -25,8 +25,8 @@ const data = [{
 
 const layout = {
     autosize: true,
-    height: 550,
-    width: 550,
+    height: 500,
+    width: 500,
     margin: {
         l: 0,
         r: 0,

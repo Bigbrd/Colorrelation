@@ -39,10 +39,7 @@ function getPred(data) {
   let dataString = JSON.stringify(data);
   
   //these are secrets that need to be hidden somehow.
-//   let host = "ussouthcentral.services.azureml.net";
-//   let path = "/subscriptions/17747feb8f364e5b8e23a2d2ca7d96f7/services/d1d5e5a79e9e40b290c60c080cc57dc0/execute?api-version=2.0&format=swagger"
   let method = "POST";
-//   let api_key = "cRUk+ge5ohSld3228wI+6HDLopFtu6+N7oWHiXSUc6klbdCCweS2wsuU/SXIUKu4U/vKhZcy+13lR6DuWhtXZw==";
     let host = config.host;
   let path = config.path;
     let api_key = config.api_key;
